@@ -20,20 +20,31 @@
                 </tr>
             </thead>
             <tbody class="bg-gray-100 divide-y divide-gray-150">
-                @forelse($filteredDocuments as $document)
+                @forelse($filteredDocuments as $key => $item)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $loop->index + 1 }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $document['name'] }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $key + 1 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->surat_undangan }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <button class="bg-blue hover:bg-blueLight text-white font-semibold py-1 px-4 rounded">Download</button>
-                        <button class="bg-red hover:bg-red-700 text-white font-semibold py-1 px-4 rounded">Hapus</button>
+                        <!-- Download button -->
+                        <a href="{{ route('notulensi.pdf', $item->id) }}" target="_blank" class="bg-blue hover:bg-blueLight text-white font-semibold py-1 px-4 rounded">
+                            Download
+                        </a>
+                        
+                        <!-- Delete button -->
+                        <button wire:click="deleteDocument({{ $item->id }})" class="bg-red hover:bg-red-700 text-white font-semibold py-1 px-4 rounded ml-2">
+                            Hapus
+                        </button>
                     </td>
+                   
+                   
+                   
                 </tr>
                 @empty
                 <tr>
                     <td colspan="3" class="px-6 py-4 text-center text-sm text-gray-500">Dokumen tidak ditemukan</td>
                 </tr>
                 @endforelse
+               
             </tbody>
         </table>
     </div>
