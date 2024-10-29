@@ -1,21 +1,28 @@
-## Installing
+# Project Name
 
-```
-composer install
-```
+Notulensi App merupakan sebuah aplikasi berbasis website yang digunakan untuk melakukan catatan hasil notulensi rapat secara online.
 
-```
-cd .env.example .env
-```
+## Struktur/Hirarki Folder
 
-```
-php artisan key:generate
-```
+    ├── app
+    │   ├── Http
+    │   ├── Models
+    │   ├── Providers
+    │   └── View
+    ├── bootstrap
+    ├── config
+    ├── database
+    │   ├── factories
+    │   ├── migrations
+    │   └── seeders
+    ├── public
+    ├── resources
+    │   ├── css
+    │   ├── js
+    │   ├── lang
+    │   └── views
+    ├── routes
+    ├── storage
+    ├── tests
 
-```
-php artisan migrate
-```
-
-```
-php artisan serve
-```
+└── vendor

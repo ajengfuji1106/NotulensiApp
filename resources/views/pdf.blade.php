@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h1>Notulensi</h1>
+    <h2>Notulensi</h2>
     
     <div class="message">
         <h2>Message:</h2>
@@ -29,7 +29,7 @@
     <div class="images">
         @foreach ($file_path as $image)
             <div class="image">
-                <img src="{{ public_path('storage/file_path/' . $image) }}" alt="Image" style="max-width: 100%; height: auto;">
+                <img src="{{ storage_path('app/public/' . $image) }}" alt="Image" style="max-width: 100%; height: auto;">
             </div>
         @endforeach
     </div>

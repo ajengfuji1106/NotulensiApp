@@ -59,7 +59,9 @@
                 <button type="submit" class="bg-white text-blue font-semibold px-4 py-2 rounded-md hover:bg-blue-600">Simpan</button>
             </div>
         </form>
-        
+        <div class="mt-2 mb-4">
+    <a href="/tindakLanjut" class="text-black font-semibold">Rencana Tindak Lanjut Klik disini</a>
+</div> 
     
     </div>
 </div>

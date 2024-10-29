@@ -17,9 +17,17 @@ use App\Livewire\HalamanNotulensi;
 use App\Livewire\HalamanDaftarHadir;
 use App\Livewire\LihatDaftarHadir;
 
+// Route::get('/', function () {
+    // return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('register');
 });
+// Route::get('/', \App\Livewire\Undangan::class);
+
+//route untuk login
+Route::get('/undangan', \App\Livewire\Undangan::class)->middleware(['auth:sanctum', 'verified']);
+
 
 // Routes for Livewire components
 Route::get('/undangan', Undangan::class);
@@ -49,7 +57,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/undangan', Undangan::class,function () {
+        return view('livewire.undangan');
     })->name('dashboard');
 });
