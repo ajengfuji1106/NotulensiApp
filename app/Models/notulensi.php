@@ -9,6 +9,7 @@ class notulensi extends Model
 {
     use HasFactory;
 
+    //Hanya class Notulensi yang dapat mengakses $fillable
     protected $fillable = [
         'hari_tanggal',
         'ruang_rapat',

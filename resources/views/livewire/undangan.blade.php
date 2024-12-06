@@ -12,7 +12,7 @@
                 Surat undangan rapat asistensi Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) 2024 yang akan 
                 diselenggarakan secara luring pada 15 September 2024 di Gedung B302 oleh semua staff yang telah diberikan 
                 undangan perihal tersebut.... 
-                <a href="#" class="text-blue-500 font-semibold">Baca Selengkapnya</a>
+                <a href="/suratundangan" class="text-blue-500 font-semibold">Baca Selengkapnya</a>
             </p>    
         </div>  
         <div class="grid justify-items-end">

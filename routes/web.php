@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotulensiController;
 use App\Livewire\Undangan;
+use App\Livewire\SuratUndangan;
 use App\Livewire\UndanganLainnya;
 use App\Livewire\UploadUndangan;
 use App\Livewire\Sidebar;
@@ -31,6 +32,7 @@ Route::get('/undangan', \App\Livewire\Undangan::class)->middleware(['auth:sanctu
 
 // Routes for Livewire components
 Route::get('/undangan', Undangan::class);
+Route::get('/suratundangan', SuratUndangan::class);
 Route::get('/undanganlainnya', UndanganLainnya::class);
 Route::get('/sidebar', Sidebar::class);
 Route::get('/uploadUndangan', UploadUndangan::class);

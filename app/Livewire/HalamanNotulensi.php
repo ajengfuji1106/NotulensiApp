@@ -12,15 +12,15 @@ class HalamanNotulensi extends Component
 {
     public $search = ''; // Properti untuk pencarian
     public $sortField = 'surat_undangan'; // Kolom untuk sorting default
-    public $sortDirection = 'asc'; // Arah sorting default
+    public $sortDirection = 'asc'; // Arah sorting default ascending (naik)
 
-    // Query the notulensi data
+    // mengambil data notulensi yang sudah difilter berdasarkan pencarian
     public function getFilteredDocumentsProperty()
     {
         // Log pencarian
         Log::info('Pencarian dokumen dengan kata kunci: ' . $this->search);
 
-        // Filter notulensi berdasarkan query pencarian
+        // Filter notulensi berdasarkan query mencari notulensi yang mengandung kata kunci dalam kolom
         $query = notulensi::query()
             ->where('surat_undangan', 'like', '%' . $this->search . '%')
             ->orWhere('ruang_rapat', 'like', '%' . $this->search . '%');
@@ -31,13 +31,13 @@ class HalamanNotulensi extends Component
 
     public function searchDocuments()
 {
-    // Perbarui data dan log aktivitas pencarian
+    // Data hasil pencarian diambil dari getFilteredDocumentsProperty()
         $this->filteredDocuments = $this->getFilteredDocumentsProperty();
         Log::info('Dokumen diperbarui dengan hasil pencarian: ' . $this->search);
 }
 
 
-    public function deleteDocument($id)
+    public function deleteDocument($id) //menghapus dokumen berdasarkan id
     {
         $document = notulensi::findOrFail($id);
 
@@ -73,6 +73,7 @@ class HalamanNotulensi extends Component
 
     public function render()
     {
+        //menampilkan view (tampilan) Livewire, data yang sudah difilter diambil dan dikirim ke tampilan halaman-notulensi
         return view('livewire.halaman-notulensi', [
             'filteredDocuments' => $this->getFilteredDocumentsProperty(), // Panggil langsung data yang sudah disaring
         ]);

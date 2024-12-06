@@ -9,14 +9,16 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class NotulensiController extends Controller
 {
+    //Mengambil semua data dari tabel notulensi dan menyimpannya ke dalam variabel $notulensi.
     public function index() {
-        $notulensi = notulensi::all();
+        $notulensi = notulensi::all(); //objek yang berisi kumpulan data dari semua catatan notulensi yang diambil dari database menggunakan model
         return view('livewire.halaman-notulensi', compact('notulensi'));
     }
     public function create() {
         return view('livewire.notulensi');
     }
-    public function store(Request $request) {
+    //Menerima data yang dikirim melalui form
+    public function store(Request $request) { //objek dari class Request yang menyimpan data permintaan HTTP, seperti data formulir yang dikirimkan oleh pengguna.
         $request->validate([
             'hari_tanggal' => 'required|date',
             'ruang_rapat' => 'required|string|max:255',
@@ -77,12 +79,17 @@ class NotulensiController extends Controller
         
         // Prepare data for the PDF
         $data = [
+            'hari_tanggal' => $notulensi->hari_tanggal,
+            'ruang_rapat' => $notulensi->ruang_rapat,
+            'waktu' => $notulensi->waktu,
+            'surat_undangan' => $notulensi->surat_undangan,
+            'tipe_rapat' => $notulensi->tipe_rapat,
             'message' => $notulensi->message,
             'file_path' => $filePaths,
         ];
     
         // Load the view and pass the data
-        $pdf = PDF::loadView('pdf', $data);
+        $pdf = PDF::loadView('pdf', $data); // objek dari class PDF yang digunakan untuk menghasilkan file PDF dari data yang disediakan.
     
         // Download the PDF
         return $pdf->download('notulensi_' . $id . '.pdf');
